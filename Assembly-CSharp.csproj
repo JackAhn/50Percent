@@ -64,7 +64,9 @@
     <Compile Include="Assets\Scripts\DTO\Item.cs" />
     <Compile Include="Assets\Scripts\DTO\Rank.cs" />
     <Compile Include="Assets\Scripts\DTO\User.cs" />
-    <Compile Include="Assets\Scripts\Events\ButtonEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\LoginEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\RegisterEvent.cs" />
+    <Compile Include="Assets\Scripts\Instance\RegisterInstance.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -335,6 +337,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf">
+      <HintPath>D:/Unity/50Percent/Assets/Plugins/Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>D:/Unity/50Percent/Assets/Plugins/MySql.Data.dll</HintPath>
     </Reference>
@@ -352,9 +357,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Unity/50Percent/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Protobuf">
-      <HintPath>D:/Unity/50Percent/Assets/Plugins/Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

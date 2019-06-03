@@ -5,10 +5,10 @@ using UnityEngine;
 public class User : MonoBehaviour
 {
     //사용자 정보 클래스
-    private int id { get; set; }
-    private string userId { get; set; }
-    private string pw { get; set; }
-    private string nickname { get; set; }
+    public int id { get; private set; }
+    public string userId { get; private set; }
+    public string pw { get; private set; }
+    public string nickname { get; private set; }
 
     public User()
     {
