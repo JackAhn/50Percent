@@ -7,12 +7,12 @@ using TMPro;
 public class RegisterEvent : MonoBehaviour
 {
     //RegisterScene 클릭 이벤트
-    public void onClickCancelSignUp() //회원 가입 취소 버튼
+    public void onClickCancelSignUp() //로그인 화면 이동 이벤트
     {
         SceneManager.LoadScene("LoginScene");
     }
 
-    public void onClickaddUser() //회원 가입 버튼
+    public void onClickaddUser() //회원 가입 버튼 클릭 이벤트
     {
         //TextMeshProUGUI panelTitle = GameObject.Find("PopupTitle").GetComponent<TextMeshProUGUI>();
         //TextMeshProUGUI panelText = GameObject.Find("PopupText").GetComponent<TextMeshProUGUI>();
@@ -25,7 +25,7 @@ public class RegisterEvent : MonoBehaviour
             if (textVal[i].Equals("") || textVal[i] == null)
             {
                 //Panel 추가시켜 팝업창 띄우게 하기
-                RegisterInstance.Popup.SetActive(true);
+                PopupInstance.Popup.SetActive(true);
                 setPopupText("Error", "A space exists");
                 Debug.Log("공백");
                 return;
@@ -33,7 +33,7 @@ public class RegisterEvent : MonoBehaviour
         }
         if (!textVal[2].Equals(textVal[3]))
         {
-            RegisterInstance.Popup.SetActive(true);
+            PopupInstance.Popup.SetActive(true);
             setPopupText("Error", "Password doesn't match.");
             Debug.Log("PW 불일치");
             return;
@@ -43,7 +43,7 @@ public class RegisterEvent : MonoBehaviour
         bool val = dao.insertUser(new User(textVal[0], textVal[1], textVal[2]));
         if (val)
         {
-            RegisterInstance.Popup.SetActive(true);
+            PopupInstance.Popup.SetActive(true);
             setPopupText("Welcome", "Welcome to 50Percent!");
         }
         else if (!val)
@@ -66,7 +66,7 @@ public class RegisterEvent : MonoBehaviour
         return textmeshPro.text;
     }
 
-    public void onClickSignUpExit()
+    public void onClickPopupExit()
     {
         //RegisterInstance.Popup.SetActive(false);
         if (GameObject.Find("PopupTitle").GetComponent<TextMeshProUGUI>().text.Equals("Welcome"))
@@ -75,7 +75,7 @@ public class RegisterEvent : MonoBehaviour
         }
         else
         {
-            RegisterInstance.Popup.SetActive(false);
+            PopupInstance.Popup.SetActive(false);
         }
     }
 }

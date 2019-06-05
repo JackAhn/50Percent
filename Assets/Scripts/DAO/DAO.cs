@@ -8,7 +8,7 @@ using System;
 public class DAO : MonoBehaviour
 {
     private static DAO dao;
-    private MySqlConnection connection = new MySqlConnection("Server=localhost;Database=50percent;Uid=root;Pwd=1234;");
+    private MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;Database=50percent;UserId=root;Password=1234;");
 
 
     public static DAO getInstance()
@@ -23,6 +23,30 @@ public class DAO : MonoBehaviour
     public void open()
     {
         connection.Open();
+    }
+
+    public bool checkUser(string id, string pw)
+    {
+        bool val = false;
+        string query = "select * from user where id='" + id + "' and pw='" + pw + "'";
+        MySqlCommand command = new MySqlCommand(query, connection);
+        try
+        {
+            if (command.ExecuteReader().NextResult())
+            {
+                val = true;
+            }
+            else
+            {
+                val = false;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            val = false;
+        }
+        return val;
     }
 
     public bool insertUser(User user)
