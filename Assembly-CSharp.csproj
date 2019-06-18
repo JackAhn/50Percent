@@ -60,14 +60,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\DAO\DAO.cs" />
-    <Compile Include="Assets\Scripts\DTO\Item.cs" />
-    <Compile Include="Assets\Scripts\DTO\Rank.cs" />
-    <Compile Include="Assets\Scripts\DTO\User.cs" />
-    <Compile Include="Assets\Scripts\Events\LoginEvent.cs" />
-    <Compile Include="Assets\Scripts\Events\RegisterEvent.cs" />
-    <Compile Include="Assets\Scripts\Instance\PopupInstance.cs" />
-    <Compile Include="Assets\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Resources\Scripts\DAO\DAO.cs" />
+    <Compile Include="Assets\Resources\Scripts\DTO\Item.cs" />
+    <Compile Include="Assets\Resources\Scripts\DTO\Rank.cs" />
+    <Compile Include="Assets\Resources\Scripts\DTO\User.cs" />
+    <Compile Include="Assets\Resources\Scripts\Events\LoginEvent.cs" />
+    <Compile Include="Assets\Resources\Scripts\Events\RegisterEvent.cs" />
+    <Compile Include="Assets\Resources\Scripts\Instance\PopupInstance.cs" />
+    <Compile Include="Assets\Resources\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\Manager\PlayerManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\Manager\SelectManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -339,10 +342,10 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
-      <HintPath>D:/Unity/50Percent/Assets/Plugins/Google.Protobuf.dll</HintPath>
+      <HintPath>D:/Unity/50Percent/Assets/Resources/Plugins/Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>D:/Unity/50Percent/Assets/Plugins/MySql.Data.dll</HintPath>
+      <HintPath>D:/Unity/50Percent/Assets/Resources/Plugins/MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>D:/Unity/50Percent/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
