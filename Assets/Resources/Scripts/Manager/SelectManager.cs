@@ -5,27 +5,28 @@ using UnityEngine;
 
 public class SelectManager : MonoBehaviour
 {
+
     //발판
-    private GameObject selectObj1 = Resources.Load("Prefabs/Select1") as GameObject;
-    private GameObject selectObj2 = Resources.Load("Prefabs/Select2") as GameObject;
-    private GameObject selectObj3 = Resources.Load("Prefabs/Select3") as GameObject;
-    private GameObject selectObj4 = Resources.Load("Prefabs/Select4") as GameObject;
-    private GameObject selectObj5 = Resources.Load("Prefabs/Select5") as GameObject;
-    private GameObject selectObj6 = Resources.Load("Prefabs/Select6") as GameObject;
+    private GameObject selectObj1;
+    private GameObject selectObj2;
+    private GameObject selectObj3;
+    private GameObject selectObj4;
+    private GameObject selectObj5;
+    private GameObject selectObj6;
 
     private static SelectManager instance;
 
     private static PlayerManager pm;
+    private static FadeController fc;
     private static int selected; //선택한 발판 번호
     private static GameObject[] selectList; //선택할 랜덤 발판 배열
-    private static GameObject[] upselectList; //위쪽에 있는 상위 발판 배열
 
     private int tileCount = 2; //만들어질 발판의 개수
     private float startX = 0f; //시작 X 위치
 
     void Awake()
     {
-        
+
     }
 
 
@@ -45,11 +46,12 @@ public class SelectManager : MonoBehaviour
 
     public void createSelect() //발판 생성 메소드
     {
+        setPrefab();
         if(selectList == null)
         {
             selectList = new GameObject[tileCount];
-            upselectList = new GameObject[tileCount];
             pm = PlayerManager.getInstance();
+            fc = new FadeController();
         }
 
         selectObj();//랜덤으로 발판 선택
@@ -68,6 +70,16 @@ public class SelectManager : MonoBehaviour
             }
         }
         selected = 1;
+    }
+
+    private void setPrefab()
+    {
+        selectObj1 = Resources.Load("Prefabs/Select1") as GameObject;
+        selectObj2 = Resources.Load("Prefabs/Select2") as GameObject;
+        selectObj3 = Resources.Load("Prefabs/Select3") as GameObject;
+        selectObj4 = Resources.Load("Prefabs/Select4") as GameObject;
+        selectObj5 = Resources.Load("Prefabs/Select5") as GameObject;
+        selectObj6 = Resources.Load("Prefabs/Select6") as GameObject;
     }
 
     private void selectObj()  //랜덤 발판 생성
@@ -125,7 +137,7 @@ public class SelectManager : MonoBehaviour
 
     public void moveLeft() //왼쪽으로 이동
     {
-        if (selected == 2)
+        if (selected <= tileCount && selected > 1)
         {
             selected--;
             pm.changePlayer("Select" + selected);
@@ -136,7 +148,7 @@ public class SelectManager : MonoBehaviour
 
     public void moveRight() //오른쪽으로 이동
     {
-        if(selected == 1)
+        if (selected >= 1 && selected < tileCount)
         {
             selected++;
             pm.changePlayer("Select" + selected);
@@ -146,26 +158,36 @@ public class SelectManager : MonoBehaviour
 
     public void checkValue() //결과 확인
     {
+        System.Random random = new System.Random();
         int[] val = new int[tileCount];
-        int max = 0;
+        int max = 0; //max 값
+        int maxind = 0; //max index 값
         for (int i = 0; i < val.Length; i++)
-            val[i] = makeRandomValue(); //Select 별 랜덤 숫자 생성
+        {
+            val[i] = random.Next(1, 1000); //Select 별 랜덤 숫자 생성
+            Debug.Log(i + "=" + val[i]);
+        }
 
         for(int i = 0; i < val.Length; i++)
         {
-            if (val[i] > max) //대소비교
-                max = i;
+
+            if (Math.Max(val[i], max) == val[i]) { //대소비교
+                max = val[i];
+                maxind = i + 1;
+            } 
         }
+
+        Debug.Log("selected = " + selected + ", max value = " + val[maxind - 1]);
         
         //결과 확인
-
+        if(selected == maxind)
+        {
+            pm.upScore();
+        }
+        else
+        {
+            pm.downScore();
+        }
     }
-
-    private int makeRandomValue() //랜덤 숫자 생성
-    {
-        System.Random random = new System.Random();
-        return random.Next(1, 1000);
-    }
-
 
 }

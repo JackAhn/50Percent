@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\Controller\FadeController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Controller\PlayerMove.cs" />
     <Compile Include="Assets\Resources\Scripts\DAO\DAO.cs" />
     <Compile Include="Assets\Resources\Scripts\DTO\Item.cs" />
     <Compile Include="Assets\Resources\Scripts\DTO\Rank.cs" />
@@ -70,7 +72,6 @@
     <Compile Include="Assets\Resources\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\SelectManager.cs" />
-    <Compile Include="Assets\Resources\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
