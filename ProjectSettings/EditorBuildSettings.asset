@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Resources/Scenes/LoginScene.unity
+    guid: b43391e0b79ad08469422b04c2f6ee36
+  - enabled: 1
+    path: Assets/Resources/Scenes/RegisterScene.unity
+    guid: a36926926759ace45827efedbc681874
+  - enabled: 1
+    path: Assets/Resources/Scenes/MainScene.unity
+    guid: 5c34f0627aacfaa4a9bf5d68ccab7cc5
+  - enabled: 1
+    path: Assets/Resources/Scenes/GameScene.unity
+    guid: e03b8e6a0bfad0341937b6029c3a42a5
+  - enabled: 1
+    path: Assets/Resources/Scenes/ResultScene.unity
+    guid: 871569f0c295c7e42a32a4b77c8f2e0f
   m_configObjects: {}

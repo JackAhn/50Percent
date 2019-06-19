@@ -17,23 +17,12 @@ public class SelectManager : MonoBehaviour
     private static SelectManager instance;
 
     private static PlayerManager pm;
-    private static FadeController fc;
     private static int selected; //선택한 발판 번호
     private static GameObject[] selectList; //선택할 랜덤 발판 배열
 
     private int tileCount = 2; //만들어질 발판의 개수
     private float startX = 0f; //시작 X 위치
 
-    void Awake()
-    {
-
-    }
-
-
-    void Start()
-    {
-
-    }
 
     public static SelectManager getInstance()
     {
@@ -51,7 +40,6 @@ public class SelectManager : MonoBehaviour
         {
             selectList = new GameObject[tileCount];
             pm = PlayerManager.getInstance();
-            fc = new FadeController();
         }
 
         selectObj();//랜덤으로 발판 선택
@@ -72,7 +60,7 @@ public class SelectManager : MonoBehaviour
         selected = 1;
     }
 
-    private void setPrefab()
+    private void setPrefab() //동적 생성 전 Prefab 가져오기
     {
         selectObj1 = Resources.Load("Prefabs/Select1") as GameObject;
         selectObj2 = Resources.Load("Prefabs/Select2") as GameObject;
@@ -156,7 +144,7 @@ public class SelectManager : MonoBehaviour
         }
     }
 
-    public void checkValue() //결과 확인
+    public bool checkValue() //결과 확인
     {
         System.Random random = new System.Random();
         int[] val = new int[tileCount];
@@ -183,10 +171,12 @@ public class SelectManager : MonoBehaviour
         if(selected == maxind)
         {
             pm.upScore();
+            return true;
         }
         else
         {
             pm.downScore();
+            return false;
         }
     }
 

@@ -9,7 +9,12 @@ public class PlayerManager : MonoBehaviour
 {
 
     private static PlayerManager instance;
-    private static int score;
+
+    public static int score; //점수
+    public static int success; //성공 횟수
+    public static int fail; //실패 횟수
+    public static bool isMove = true; //Moving 유무 판단
+
 
     private static TextMeshProUGUI scoreText;
 
@@ -42,6 +47,7 @@ public class PlayerManager : MonoBehaviour
     public void upScore()
     {
         score++;
+        success++;
         scoreText.SetText("Score : " + score);
         Debug.Log(score);
     }
@@ -50,6 +56,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(score != 0)
             score--;
+        fail++;
         scoreText.SetText("Score : " + score);
         Debug.Log(score);
     }
