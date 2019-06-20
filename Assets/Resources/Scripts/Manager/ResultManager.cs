@@ -40,5 +40,6 @@ public class ResultManager : MonoBehaviour
             yield return null;
         }
         im.color = color;
+        im.enabled = false;
     }
 }

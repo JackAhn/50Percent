@@ -26,13 +26,19 @@ public class LoginEvent : MonoBehaviour
         }
         DAO dao = DAO.getInstance();
         dao.open();
-        bool val = dao.checkUser(textVal[0], textVal[1]);
-        if (val)
+        var val = dao.checkUser(textVal[0], textVal[1]);
+        if (val.id != 0)
         {
+            //유저 데이터 저장
+            MainManager.userData = val;
+            MainManager.rankData = new Rank(val.nickname, 0);
+
+            //MainScene 이동
             SceneManager.LoadScene("MainScene");
         }
         else
         {
+            //에러 메시지 출력
             setPopupText("Error", "id and pw do not match.");
         }
         dao.close();
@@ -64,6 +70,7 @@ public class LoginEvent : MonoBehaviour
 
     private void setPopupText(string title, string text)
     {
+        PopupInstance.Popup.SetActive(true);
         GameObject.Find("PopupTitle").GetComponent<TextMeshProUGUI>().text = title;
         GameObject.Find("PopupText").GetComponent<TextMeshProUGUI>().text = text;
     }

@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
             PlayerManager.isMove = false;
             timerText.text = string.Format("{0:N2}", 0);
             StartCoroutine(CoFadeIn(1f));
+            //게임 데이터 DB에 저장
+            DAO dao = DAO.getInstance();
+            dao.open();
+            Debug.Log(MainManager.userData.userId);
+            MainManager.rankData.score = PlayerManager.score;
+            dao.insertRank(MainManager.rankData);
             SceneManager.LoadScene("ResultScene");
         }
 

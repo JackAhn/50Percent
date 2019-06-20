@@ -66,10 +66,12 @@
     <Compile Include="Assets\Resources\Scripts\DTO\Rank.cs" />
     <Compile Include="Assets\Resources\Scripts\DTO\User.cs" />
     <Compile Include="Assets\Resources\Scripts\Events\LoginEvent.cs" />
+    <Compile Include="Assets\Resources\Scripts\Events\MainEvent.cs" />
     <Compile Include="Assets\Resources\Scripts\Events\RegisterEvent.cs" />
     <Compile Include="Assets\Resources\Scripts\Events\ResultEvent.cs" />
     <Compile Include="Assets\Resources\Scripts\Instance\PopupInstance.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\Manager\MainManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\PlayerManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\ResultManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Manager\SelectManager.cs" />

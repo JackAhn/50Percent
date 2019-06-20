@@ -25,34 +25,42 @@ public class DAO : MonoBehaviour
         connection.Open();
     }
 
-    public bool checkUser(string id, string pw)
+    public User checkUser(string id, string pw)
     {
-        bool val = false;
-        string query = "select * from user where id='" + id + "' and pw='" + pw + "'";
+        string query = "select * from user where id='" + id + "' and password='" + pw + "'";
+        Debug.Log(query);
         MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader reader = command.ExecuteReader();
         try
         {
-            if (command.ExecuteReader().NextResult())
+            if (reader.Read())
             {
-                val = true;
+                User val = new User
+                {
+                    id = reader.GetInt32("no"),
+                    userId = reader.GetString("id"),
+                    nickname = reader.GetString("nickname")
+                };
+                Debug.Log(val.userId);
+                return val;
             }
             else
             {
-                val = false;
+                return null;
             }
         }
         catch (Exception e)
         {
             Debug.Log(e.Message);
-            val = false;
         }
-        return val;
-    }
+        reader.Close();
+        return null;
 
+    }
     public bool insertUser(User user)
     {
         bool val = false;
-        string query = "insert into user values('0', '"+user.userId+"', '"+user.nickname+"', '"+user.pw+"')";
+        string query = "insert into user values('0', '" + user.userId + "', '" + user.nickname + "', '" + user.pw + "')";
         MySqlCommand command = new MySqlCommand(query, connection);
         try
         {
@@ -66,6 +74,30 @@ public class DAO : MonoBehaviour
             }
         }
         catch(Exception e)
+        {
+            Debug.Log(e.Message);
+            val = false;
+        }
+        return val;
+    }
+
+    public bool insertRank(Rank rank)
+    {
+        bool val = false;
+        string query = "insert into `rank` values('0', '" + rank.nickname + "', '" + rank.score + "')";
+        MySqlCommand command = new MySqlCommand(query, connection);
+        try
+        {
+            if (command.ExecuteNonQuery() == 1)
+            {
+                val = true;
+            }
+            else
+            {
+                val = false;
+            }
+        }
+        catch (Exception e)
         {
             Debug.Log(e.Message);
             val = false;
