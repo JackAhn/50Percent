@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(MainManager.userData.userId);
             MainManager.rankData.score = PlayerManager.score;
             dao.insertRank(MainManager.rankData);
+            initRank();
             SceneManager.LoadScene("ResultScene");
         }
 
@@ -75,6 +76,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         im.color = color;
+    }
+
+    private void initRank()
+    {
+        MainManager.rankData = new Rank(MainManager.userData.nickname, 0);
     }
 
 }

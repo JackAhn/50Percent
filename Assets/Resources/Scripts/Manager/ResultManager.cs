@@ -13,6 +13,12 @@ public class ResultManager : MonoBehaviour
         GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>().text = "Your score is " + PlayerManager.score;
         GameObject.Find("SuccessText").GetComponent<TextMeshProUGUI>().text = "Success : " + PlayerManager.success;
         GameObject.Find("FailText").GetComponent<TextMeshProUGUI>().text = "Fail : " + PlayerManager.fail;
+
+        //데이터 초기화
+        PlayerManager.isMove = true;
+        PlayerManager.score = 0;
+        PlayerManager.success = 0;
+        PlayerManager.fail = 0;
     }
 
     // Update is called once per frame

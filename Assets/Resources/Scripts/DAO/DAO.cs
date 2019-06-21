@@ -105,6 +105,25 @@ public class DAO : MonoBehaviour
         return val;
     }
 
+    public List<Rank> getTop5Rank()
+    {
+        List<Rank> list = new List<Rank>();
+        string query = "select * from `rank` order by score desc limit 5";
+        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        try
+        {
+            while (reader.Read())
+            {
+                list.Add(new Rank(reader.GetString("nickname"), reader.GetInt32("score")));
+            }
+        }catch(Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+        return list;
+    }
+
 
     public void close()
     {
