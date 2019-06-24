@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-
+    private static SelectManager select;
     private static PlayerManager instance;
 
     public static int score; //점수
@@ -29,14 +31,14 @@ public class PlayerManager : MonoBehaviour
 
     public void Initialize() //Select1 발판에 Player 위치 설정
     {
-        GameObject player = GameObject.Find("Player");
+        /*GameObject player = GameObject.Find("Player");
         player.transform.position = GameObject.Find("Select1(Clone)").gameObject.transform.GetChild(1).transform.position;
-        player.transform.position = new Vector3(player.transform.position.x, 0.5f);
-
+        player.transform.position = new Vector3(player.transform.position.x, 0.2f);*/
+        select = SelectManager.getInstance();
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
     }
 
-    public void changePlayer(String tagName)
+    public void changePlayer(string tagName)
     {
         GameObject player = GameObject.Find("Player");
         GameObject select = GameObject.Find(tagName + "(Clone)");

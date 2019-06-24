@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (!sm.checkValue())
                     StartCoroutine(CoFadeOut(0.4f));
+                sm.deleteObj();
+                sm.createSelect();
             }
         }
     }

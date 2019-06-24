@@ -19,8 +19,8 @@ public class SelectManager : MonoBehaviour
     private static PlayerManager pm;
     private static int selected; //선택한 발판 번호
     private static GameObject[] selectList; //선택할 랜덤 발판 배열
+    private static int tileCount = 2; //만들어질 발판의 개수
 
-    private int tileCount = 2; //만들어질 발판의 개수
     private float startX = 0f; //시작 X 위치
 
 
@@ -36,28 +36,30 @@ public class SelectManager : MonoBehaviour
     public void createSelect() //발판 생성 메소드
     {
         setPrefab();
-        if(selectList == null)
-        {
-            selectList = new GameObject[tileCount];
+        setTileCount();
+
+        selectList = new GameObject[tileCount];
+        if(pm == null)
             pm = PlayerManager.getInstance();
-        }
 
         selectObj();//랜덤으로 발판 선택
         setStartX();
-
         float startY = -2;
+
         for(int i = 0; i < selectList.Length; i++)
         {
             selectList[i].gameObject.name = "Select" + (i + 1);
-            Instantiate(selectList[i], new Vector3(startX, startY), selectList[i].transform.rotation);
-            startX += 4f;
-            if (i == 1)
+            GameObject obj = Instantiate(selectList[i], new Vector3(startX, startY), selectList[i].transform.rotation);
+            if (i == 0)
             {
-                startY += 5f;
-                setStartX();
+                GameObject player = GameObject.Find("Player");
+                player.transform.position = obj.transform.GetChild(1).transform.position + new Vector3(0, 2f, 0);
             }
+            startX += 4f;
         }
+
         selected = 1;
+        //pm.Initialize();
     }
 
     private void setPrefab() //동적 생성 전 Prefab 가져오기
@@ -75,6 +77,7 @@ public class SelectManager : MonoBehaviour
         System.Random random = new System.Random();
         int i = 0;
         int index = 0;
+     
         while(i < tileCount)
         {
             int val = random.Next(1, 6);
@@ -101,6 +104,26 @@ public class SelectManager : MonoBehaviour
             }
             index++;
             i++;
+        }
+    }
+
+    private void setTileCount()
+    {
+        if(PlayerManager.score >= 20)
+        {
+            tileCount = 5;
+        }
+        else if(PlayerManager.score >= 10)
+        {
+            tileCount = 4;
+        }
+        else if(PlayerManager.score >= 5)
+        {
+            tileCount = 3;
+        }
+        else
+        {
+            tileCount = 2;
         }
     }
 
@@ -177,6 +200,14 @@ public class SelectManager : MonoBehaviour
         {
             pm.downScore();
             return false;
+        }
+    }
+
+    public void deleteObj() //발판 삭제
+    {
+        for(int i = 0; i < tileCount; i++)
+        {
+            Destroy(GameObject.Find("Select" + (i + 1) + "(Clone)"), 0f);
         }
     }
 

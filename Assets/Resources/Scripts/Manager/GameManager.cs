@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timerText = GameObject.Find("TimeText").GetComponent<TextMeshProUGUI>();
-        time = 5f;
+        time = 60f;
     }
 
     // Update is called once per frame
