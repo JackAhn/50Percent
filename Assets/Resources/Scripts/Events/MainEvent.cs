@@ -9,4 +9,9 @@ public class MainEvent : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    public void onClickLogout()
+    {
+        SceneManager.LoadScene("LoginScene");
+    }
 }

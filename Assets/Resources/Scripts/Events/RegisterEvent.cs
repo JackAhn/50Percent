@@ -40,7 +40,7 @@ public class RegisterEvent : MonoBehaviour
         }
         DAO dao = DAO.getInstance();
         dao.open();
-        bool val = dao.insertUser(new User(textVal[0], textVal[1], textVal[2]));
+        bool val = dao.insertUser(new User(textVal[0], textVal[2], textVal[1]));
         if (val)
         {
             PopupInstance.Popup.SetActive(true);

@@ -26,7 +26,7 @@ public class LoginEvent : MonoBehaviour
         }
         DAO dao = DAO.getInstance();
         dao.open();
-        var val = dao.checkUser(textVal[0], textVal[1]);
+        User val = dao.checkUser(textVal[0], textVal[1]);
         if (val.id != 0)
         {
             //유저 데이터 저장
